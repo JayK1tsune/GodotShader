@@ -1041,7 +1041,7 @@ cast_shadow = 0
 multimesh = SubResource("MultiMesh_ndkwf")
 
 [node name="Hologram" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0908852, 0, -1.06113, 0, 1, 0, 1.06113, 0, 0.0908852, 1.52108, 2.30749, 1.52413)
+transform = Transform3D(-0.925311, 0, 0.527506, 0, 1, 0, -0.527506, 0, -0.925311, 1.52108, 2.30749, 1.52413)
 mesh = SubResource("ArrayMesh_8rfkb")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_yl0m2")
