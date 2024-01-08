@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cfuit21au3pur"
+path="res://.godot/imported/hex_rock_waterD.obj-455c31b61d12f4144be9331ead0b717e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/hex_rock_waterD.obj-455c31b61d12f4144be9331ead0b717e.mesh"]
+
+source_file="res://KayKit/Models/tiles/hex/obj/hex_rock_waterD.obj"
+dest_files=["res://.godot/imported/hex_rock_waterD.obj-455c31b61d12f4144be9331ead0b717e.mesh", "res://.godot/imported/hex_rock_waterD.obj-455c31b61d12f4144be9331ead0b717e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

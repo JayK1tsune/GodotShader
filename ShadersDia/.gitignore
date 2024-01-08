@@ -1,0 +1,4 @@
+# Godot 4+ specific ignores
+.godot/
+industrial_sunset_puresky_4k/
+industrial_sunset_puresky_4k.exr.import/

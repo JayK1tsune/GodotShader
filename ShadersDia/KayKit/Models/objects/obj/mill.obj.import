@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cnlcuwjwk1pne"
+path="res://.godot/imported/mill.obj-8d248929bdd89f7f492f755929b4e795.mesh"
+
+[deps]
+
+files=["res://.godot/imported/mill.obj-8d248929bdd89f7f492f755929b4e795.mesh"]
+
+source_file="res://KayKit/Models/objects/obj/mill.obj"
+dest_files=["res://.godot/imported/mill.obj-8d248929bdd89f7f492f755929b4e795.mesh", "res://.godot/imported/mill.obj-8d248929bdd89f7f492f755929b4e795.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

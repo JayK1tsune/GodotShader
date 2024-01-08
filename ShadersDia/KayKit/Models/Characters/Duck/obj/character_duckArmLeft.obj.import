@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dl01bdv4y5kk5"
+path="res://.godot/imported/character_duckArmLeft.obj-293d6e739b1100f6ad2cf514f052ca03.mesh"
+
+[deps]
+
+files=["res://.godot/imported/character_duckArmLeft.obj-293d6e739b1100f6ad2cf514f052ca03.mesh"]
+
+source_file="res://KayKit/Models/Characters/Duck/obj/character_duckArmLeft.obj"
+dest_files=["res://.godot/imported/character_duckArmLeft.obj-293d6e739b1100f6ad2cf514f052ca03.mesh", "res://.godot/imported/character_duckArmLeft.obj-293d6e739b1100f6ad2cf514f052ca03.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

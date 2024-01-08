@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bia4omqok4gfb"
+path="res://.godot/imported/wall_straight.obj-367e432e030ce40607d9b8a8cf5b23df.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall_straight.obj-367e432e030ce40607d9b8a8cf5b23df.mesh"]
+
+source_file="res://KayKit/Models/objects/obj/wall_straight.obj"
+dest_files=["res://.godot/imported/wall_straight.obj-367e432e030ce40607d9b8a8cf5b23df.mesh", "res://.godot/imported/wall_straight.obj-367e432e030ce40607d9b8a8cf5b23df.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

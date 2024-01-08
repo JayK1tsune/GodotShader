@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dwtd208qx0yhe"
+path="res://.godot/imported/detail_rocks_small.obj-9e839eb3f558e5f6e0a474bd807c0f00.mesh"
+
+[deps]
+
+files=["res://.godot/imported/detail_rocks_small.obj-9e839eb3f558e5f6e0a474bd807c0f00.mesh"]
+
+source_file="res://KayKit/Models/objects/obj/detail_rocks_small.obj"
+dest_files=["res://.godot/imported/detail_rocks_small.obj-9e839eb3f558e5f6e0a474bd807c0f00.mesh", "res://.godot/imported/detail_rocks_small.obj-9e839eb3f558e5f6e0a474bd807c0f00.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

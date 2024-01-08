@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq2p3bgcsldem"]
+
+[ext_resource type="PackedScene" uid="uid://d1yrlau7hciq" path="res://Cliff.blend" id="1_82etg"]
+[ext_resource type="Material" uid="uid://c6yelsd6xa68p" path="res://cliff2.tres" id="2_hpx8m"]
+
+[node name="Cliff" instance=ExtResource("1_82etg")]
+
+[node name="Cliff" parent="." index="0"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 4.31989, 0)
+material_override = ExtResource("2_hpx8m")

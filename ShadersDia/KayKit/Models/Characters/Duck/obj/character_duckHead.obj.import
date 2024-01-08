@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://mc2o5a7jlx1g"
+path="res://.godot/imported/character_duckHead.obj-b5c61f294ed4ca574fcf80ec665e5b4c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/character_duckHead.obj-b5c61f294ed4ca574fcf80ec665e5b4c.mesh"]
+
+source_file="res://KayKit/Models/Characters/Duck/obj/character_duckHead.obj"
+dest_files=["res://.godot/imported/character_duckHead.obj-b5c61f294ed4ca574fcf80ec665e5b4c.mesh", "res://.godot/imported/character_duckHead.obj-b5c61f294ed4ca574fcf80ec665e5b4c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

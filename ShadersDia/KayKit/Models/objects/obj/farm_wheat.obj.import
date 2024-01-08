@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://vipy8w2es1b4"
+path="res://.godot/imported/farm_wheat.obj-9886073b187d687c9a50abd9936d4de1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/farm_wheat.obj-9886073b187d687c9a50abd9936d4de1.mesh"]
+
+source_file="res://KayKit/Models/objects/obj/farm_wheat.obj"
+dest_files=["res://.godot/imported/farm_wheat.obj-9886073b187d687c9a50abd9936d4de1.mesh", "res://.godot/imported/farm_wheat.obj-9886073b187d687c9a50abd9936d4de1.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://8v5oq4txd4d8"
+path="res://.godot/imported/square_forest_roadB.obj-ca8ff8b6b4476ad6dd3a2fb6a4516f43.mesh"
+
+[deps]
+
+files=["res://.godot/imported/square_forest_roadB.obj-ca8ff8b6b4476ad6dd3a2fb6a4516f43.mesh"]
+
+source_file="res://KayKit/Models/tiles/square/obj/square_forest_roadB.obj"
+dest_files=["res://.godot/imported/square_forest_roadB.obj-ca8ff8b6b4476ad6dd3a2fb6a4516f43.mesh", "res://.godot/imported/square_forest_roadB.obj-ca8ff8b6b4476ad6dd3a2fb6a4516f43.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

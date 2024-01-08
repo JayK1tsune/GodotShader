@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://i8e153j1ugfi"
+path="res://.godot/imported/character_bear.obj-3a54e347b081f04a6384c03f7fd08745.mesh"
+
+[deps]
+
+files=["res://.godot/imported/character_bear.obj-3a54e347b081f04a6384c03f7fd08745.mesh"]
+
+source_file="res://KayKit/Models/Characters/Bear/obj/character_bear.obj"
+dest_files=["res://.godot/imported/character_bear.obj-3a54e347b081f04a6384c03f7fd08745.mesh", "res://.godot/imported/character_bear.obj-3a54e347b081f04a6384c03f7fd08745.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

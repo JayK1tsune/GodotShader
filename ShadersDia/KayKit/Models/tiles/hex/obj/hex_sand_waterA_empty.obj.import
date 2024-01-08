@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://rf5dcc1lf68d"
+path="res://.godot/imported/hex_sand_waterA_empty.obj-c27632e3b9d44d7df35c165a7c75f23d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/hex_sand_waterA_empty.obj-c27632e3b9d44d7df35c165a7c75f23d.mesh"]
+
+source_file="res://KayKit/Models/tiles/hex/obj/hex_sand_waterA_empty.obj"
+dest_files=["res://.godot/imported/hex_sand_waterA_empty.obj-c27632e3b9d44d7df35c165a7c75f23d.mesh", "res://.godot/imported/hex_sand_waterA_empty.obj-c27632e3b9d44d7df35c165a7c75f23d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

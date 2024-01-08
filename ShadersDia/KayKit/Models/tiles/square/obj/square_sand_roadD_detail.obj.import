@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dpd6ojdvcyeoj"
+path="res://.godot/imported/square_sand_roadD_detail.obj-aad12fdab557188b5e17509b1bd35344.mesh"
+
+[deps]
+
+files=["res://.godot/imported/square_sand_roadD_detail.obj-aad12fdab557188b5e17509b1bd35344.mesh"]
+
+source_file="res://KayKit/Models/tiles/square/obj/square_sand_roadD_detail.obj"
+dest_files=["res://.godot/imported/square_sand_roadD_detail.obj-aad12fdab557188b5e17509b1bd35344.mesh", "res://.godot/imported/square_sand_roadD_detail.obj-aad12fdab557188b5e17509b1bd35344.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

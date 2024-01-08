@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://stbxgp57vh57"
+path="res://.godot/imported/square_water.obj-316c21c0a534bdebb3ebdd16f558954c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/square_water.obj-316c21c0a534bdebb3ebdd16f558954c.mesh"]
+
+source_file="res://KayKit/Models/tiles/square/obj/square_water.obj"
+dest_files=["res://.godot/imported/square_water.obj-316c21c0a534bdebb3ebdd16f558954c.mesh", "res://.godot/imported/square_water.obj-316c21c0a534bdebb3ebdd16f558954c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

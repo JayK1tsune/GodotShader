@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c6yelsd6xa68p"]
+
+[ext_resource type="Shader" uid="uid://hx7mycj1oauk" path="res://Shaders/Cutoff.tres" id="1_ub68a"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ub68a")
+shader_parameter/cutplane = null

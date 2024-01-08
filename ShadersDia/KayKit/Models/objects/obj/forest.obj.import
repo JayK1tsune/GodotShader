@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d15tu6mge4ds8"
+path="res://.godot/imported/forest.obj-85dcac382c6a41cae07885055e4266b5.mesh"
+
+[deps]
+
+files=["res://.godot/imported/forest.obj-85dcac382c6a41cae07885055e4266b5.mesh"]
+
+source_file="res://KayKit/Models/objects/obj/forest.obj"
+dest_files=["res://.godot/imported/forest.obj-85dcac382c6a41cae07885055e4266b5.mesh", "res://.godot/imported/forest.obj-85dcac382c6a41cae07885055e4266b5.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

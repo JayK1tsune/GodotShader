@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cthqu4ur7y7cp"
+path="res://.godot/imported/square_forest_waterStraight.obj-2e19b0712e0be9d48f2ee11b9f6a734d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/square_forest_waterStraight.obj-2e19b0712e0be9d48f2ee11b9f6a734d.mesh"]
+
+source_file="res://KayKit/Models/tiles/square/obj/square_forest_waterStraight.obj"
+dest_files=["res://.godot/imported/square_forest_waterStraight.obj-2e19b0712e0be9d48f2ee11b9f6a734d.mesh", "res://.godot/imported/square_forest_waterStraight.obj-2e19b0712e0be9d48f2ee11b9f6a734d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

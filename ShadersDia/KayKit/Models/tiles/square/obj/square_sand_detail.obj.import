@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dmphcmx7m20di"
+path="res://.godot/imported/square_sand_detail.obj-60285ce42e9b7d7d0596e6684492b115.mesh"
+
+[deps]
+
+files=["res://.godot/imported/square_sand_detail.obj-60285ce42e9b7d7d0596e6684492b115.mesh"]
+
+source_file="res://KayKit/Models/tiles/square/obj/square_sand_detail.obj"
+dest_files=["res://.godot/imported/square_sand_detail.obj-60285ce42e9b7d7d0596e6684492b115.mesh", "res://.godot/imported/square_sand_detail.obj-60285ce42e9b7d7d0596e6684492b115.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

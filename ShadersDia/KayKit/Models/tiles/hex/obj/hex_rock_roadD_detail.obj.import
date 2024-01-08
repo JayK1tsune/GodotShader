@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bx2dk3djs7q2m"
+path="res://.godot/imported/hex_rock_roadD_detail.obj-53f6176bdd2e5100b7aec99f23c91cd3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/hex_rock_roadD_detail.obj-53f6176bdd2e5100b7aec99f23c91cd3.mesh"]
+
+source_file="res://KayKit/Models/tiles/hex/obj/hex_rock_roadD_detail.obj"
+dest_files=["res://.godot/imported/hex_rock_roadD_detail.obj-53f6176bdd2e5100b7aec99f23c91cd3.mesh", "res://.godot/imported/hex_rock_roadD_detail.obj-53f6176bdd2e5100b7aec99f23c91cd3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

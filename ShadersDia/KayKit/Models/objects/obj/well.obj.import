@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://obnwfv6dsiur"
+path="res://.godot/imported/well.obj-36dabd1047ab5bde664b135d222a253c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/well.obj-36dabd1047ab5bde664b135d222a253c.mesh"]
+
+source_file="res://KayKit/Models/objects/obj/well.obj"
+dest_files=["res://.godot/imported/well.obj-36dabd1047ab5bde664b135d222a253c.mesh", "res://.godot/imported/well.obj-36dabd1047ab5bde664b135d222a253c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

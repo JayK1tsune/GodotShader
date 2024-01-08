@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://didkq67kgs2m0"
+path="res://.godot/imported/castle.obj-d975e190bada6c2f63c261afb2c4db34.mesh"
+
+[deps]
+
+files=["res://.godot/imported/castle.obj-d975e190bada6c2f63c261afb2c4db34.mesh"]
+
+source_file="res://KayKit/Models/objects/obj/castle.obj"
+dest_files=["res://.godot/imported/castle.obj-d975e190bada6c2f63c261afb2c4db34.mesh", "res://.godot/imported/castle.obj-d975e190bada6c2f63c261afb2c4db34.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

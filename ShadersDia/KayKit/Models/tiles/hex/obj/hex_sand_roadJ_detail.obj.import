@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://87cxe0hnyk6j"
+path="res://.godot/imported/hex_sand_roadJ_detail.obj-220d2c8705f77f9015bbeb67dafad0fd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/hex_sand_roadJ_detail.obj-220d2c8705f77f9015bbeb67dafad0fd.mesh"]
+
+source_file="res://KayKit/Models/tiles/hex/obj/hex_sand_roadJ_detail.obj"
+dest_files=["res://.godot/imported/hex_sand_roadJ_detail.obj-220d2c8705f77f9015bbeb67dafad0fd.mesh", "res://.godot/imported/hex_sand_roadJ_detail.obj-220d2c8705f77f9015bbeb67dafad0fd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
