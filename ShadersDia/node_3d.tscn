@@ -243,9 +243,10 @@ collision_friction = 0.15
 collision_bounce = 0.48
 
 [sub_resource type="Curve" id="Curve_uia4y"]
-max_value = 0.05
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.02), 0.049723, 0.049723, 0, 0, Vector2(0.09999, 0.035), 0.0, 0.0, 0, 0, Vector2(0.10001, 0.045), 0.0117504, 0.0117504, 0, 0, Vector2(0.3, 0.05), -0.0234232, -0.0234232, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 6
+min_value = 0.01
+max_value = 0.09
+_data = [Vector2(0, 0.01), 0.0, 0.0, 0, 0, Vector2(0.1, 0.054), 0.851233, 0.851233, 0, 0, Vector2(0.2, 0.09), -0.210428, -0.210428, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 metadata/_snap_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_prwsk"]
@@ -254,15 +255,15 @@ shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.662745, 1, 1, 1)
 albedo_texture = ExtResource("25_dq16r")
-disable_receive_shadows = true
-shadow_to_opacity = true
-grow_amount = -0.904
+billboard_mode = 2
+billboard_keep_scale = true
 use_particle_trails = true
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_oksc1"]
 material = SubResource("StandardMaterial3D_prwsk")
 shape = 0
-size = 0.7
+size = 0.3
+sections = 3
 curve = SubResource("Curve_uia4y")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ogib0"]
@@ -336,18 +337,33 @@ sky = SubResource("Sky_e5r82")
 ambient_light_source = 3
 ambient_light_color = Color(0.741176, 0.772549, 0.945098, 1)
 reflected_light_source = 2
-ssao_radius = 5.87
-ssao_intensity = 8.05
-ssil_radius = 5.65
+ssao_enabled = true
+ssao_intensity = 7.73
+ssil_enabled = true
+ssil_radius = 7.7
+ssil_intensity = 4.34
+ssil_sharpness = 0.72
 glow_enabled = true
 glow_intensity = 1.53
-fog_light_energy = 1.26
-fog_sun_scatter = 0.24
+glow_blend_mode = 4
+fog_enabled = true
+fog_light_color = Color(0.313726, 0.25098, 0.639216, 1)
+fog_light_energy = 0.43
+fog_sun_scatter = 0.14
 fog_density = 0.0
-volumetric_fog_density = 0.0
-volumetric_fog_emission_energy = 450.03
-volumetric_fog_detail_spread = 0.594604
-volumetric_fog_sky_affect = 0.274
+fog_sky_affect = 0.0
+fog_height = 0.8
+fog_height_density = 5.4759
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0856
+volumetric_fog_albedo = Color(0.733333, 0.45098, 0.635294, 1)
+volumetric_fog_emission = Color(0.14902, 0.12549, 0.639216, 1)
+volumetric_fog_emission_energy = 0.2
+volumetric_fog_length = 25.67
+volumetric_fog_detail_spread = 2.63902
+volumetric_fog_ambient_inject = 0.77
+volumetric_fog_sky_affect = 0.151
+volumetric_fog_temporal_reprojection_amount = 0.643
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_dowin"]
 
@@ -917,10 +933,11 @@ max_distance = 141.24
 
 [node name="Rain" type="GPUParticles3D" parent="Particle Effects"]
 transform = Transform3D(-0.0153932, 0, -0.999882, 0, 1, 0, 0.999882, 0, -0.0153932, 0, 7.0417, 1.12956)
-amount = 200
-lifetime = 0.8
+amount = 70
+lifetime = 0.6
 speed_scale = 0.66
-randomness = 0.54
+randomness = 0.81
+collision_base_size = 31.51
 visibility_aabb = AABB(-6.43228, -7.00289, -7.53152, 12.3646, 14.0058, 15.0621)
 trail_enabled = true
 trail_lifetime = 0.2
@@ -998,6 +1015,32 @@ continuous_cd = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.673218, -0.324244, 2.35908)
 shape = SubResource("BoxShape3D_s0hhm")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Lighting"]
+transform = Transform3D(-0.310958, 0.950424, -5.79205e-10, 0.0243983, 0.0079826, 0.99967, 0.95011, 0.310856, -0.025671, -0.286883, 7.18488, 1.08995)
+light_energy = 13.67
+light_indirect_energy = 0.837
+light_volumetric_fog_energy = 3.287
+light_specular = 4.061
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
+distance_fade_begin = 1.0
+spot_range = 7.30274
+spot_angle = 28.3752
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00184655, -1.37478)
+light_color = Color(0, 0.67451, 0.67451, 1)
+light_energy = 8.264
+light_volumetric_fog_energy = 2.462
+omni_range = 2.6953
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00184655, 3.84375)
+light_color = Color(0, 0.67451, 0.67451, 1)
+light_energy = 8.264
+light_volumetric_fog_energy = 2.462
+omni_range = 3.01917
+
 [node name="Grass_Obj" type="Node" parent="."]
 
 [node name="Grass" parent="Grass_Obj" instance=ExtResource("27_oiclg")]
@@ -1041,7 +1084,7 @@ cast_shadow = 0
 multimesh = SubResource("MultiMesh_ndkwf")
 
 [node name="Hologram" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.925311, 0, 0.527506, 0, 1, 0, -0.527506, 0, -0.925311, 1.52108, 2.30749, 1.52413)
+transform = Transform3D(0.782196, 0, -0.734393, 0, 1, 0, 0.734393, 0, 0.782196, 1.52108, 2.30749, 1.52413)
 mesh = SubResource("ArrayMesh_8rfkb")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_yl0m2")
@@ -1113,6 +1156,16 @@ randomness = 0.07
 visibility_aabb = AABB(-4, -4.18848, -4, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_6gagb")
 draw_pass_1 = SubResource("TorusMesh_123jg")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="RocKobj"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.0911683, 0.660401, 0, -0.660401, 0.0911683, 0, 2.64529, 0.888431)
+light_color = Color(0.776471, 0.894118, 1, 1)
+light_energy = 16.0
+light_indirect_energy = 9.041
+light_volumetric_fog_energy = 3.599
+light_size = 0.13
+light_specular = 8.216
+spot_range = 8.31795
 
 [editable path="Character + Camera/UCharacterBody3D/CollisionShapeNormal/character_duck"]
 [editable path="Grass_Obj/Grass"]

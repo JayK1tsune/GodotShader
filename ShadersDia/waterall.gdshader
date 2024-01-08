@@ -39,6 +39,7 @@ void fragment() {
 	ALBEDO = col.rgb;
 	NORMAL_MAP = texture(normal_tex,UV).rgb;
 	ROUGHNESS = 0.11;
+	
 	ALPHA = texture(water_tex, uv_movement).a;
 }
 
