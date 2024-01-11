@@ -69,5 +69,5 @@ action_crouch={
 
 border_color={
 "type": "color",
-"value": Color(1, 0.576471, 0.490196, 1)
+"value": Color(0, 1, 0.1, 1)
 }

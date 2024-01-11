@@ -122,11 +122,11 @@ func _ready():
 			head_node.owner = scene
 		
 		# Create the camera node
-		if camera_node == null:
-			camera_node = Camera3D.new()
-			camera_node.name = "Camera"
-			head_node.add_child(camera_node)
-			camera_node.owner = scene
+		#if camera_node == null:
+			#camera_node = Camera3D.new()
+			#camera_node.name = "Camera"
+			#head_node.add_child(camera_node)
+			#camera_node.owner = scene
 		
 		# Create the raycast node
 		if raycast_node == null:
@@ -209,11 +209,11 @@ func _physics_process(delta):
 		if is_on_floor() and !is_sliding and input_dir != Vector2.ZERO:
 			head_bob_vector.y = sin(head_bob_index)
 			head_bob_vector.x = sin(head_bob_index/2)+0.5
-			camera_node.position.y = lerp(camera_node.position.y, head_bob_vector.y * (head_bob_current_intensity/2.0), delta * 10.0)
-			camera_node.position.x = lerp(camera_node.position.x, head_bob_vector.x * head_bob_current_intensity, delta * 10.0)
-		else:
-			camera_node.position.y = lerp(camera_node.position.y, 0.0, delta * 10.0)
-			camera_node.position.x = lerp(camera_node.position.x, 0.0, delta * 10.0)
+			#camera_node.position.y = lerp(camera_node.position.y, head_bob_vector.y * (head_bob_current_intensity/2.0), delta * 10.0)
+			#camera_node.position.x = lerp(camera_node.position.x, head_bob_vector.x * head_bob_current_intensity, delta * 10.0)
+		#else:
+			#camera_node.position.y = lerp(camera_node.position.y, 0.0, delta * 10.0)
+			#camera_node.position.x = lerp(camera_node.position.x, 0.0, delta * 10.0)
 		
 		# Add the gravity.
 		if !is_on_floor():
