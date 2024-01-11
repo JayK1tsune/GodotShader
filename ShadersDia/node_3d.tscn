@@ -1,4 +1,4 @@
-[gd_scene load_steps=157 format=3 uid="uid://li1naa70ewc2"]
+[gd_scene load_steps=158 format=3 uid="uid://li1naa70ewc2"]
 
 [ext_resource type="Shader" uid="uid://dbnuyafe4jyho" path="res://Scripts/water.tres" id="1_pd63u"]
 [ext_resource type="Script" path="res://Cam.gd" id="1_q56j1"]
@@ -14,10 +14,14 @@
 [ext_resource type="ArrayMesh" uid="uid://di4mm86a0ct6j" path="res://Tower/Package/AncientReliques-1-GiantStatue_Hand.obj" id="11_30tab"]
 [ext_resource type="ArrayMesh" uid="uid://du8o1gqdej6mt" path="res://Tower/Package/AncientReliques-3-Head_Totem.obj" id="12_uq5s2"]
 [ext_resource type="ArrayMesh" uid="uid://crlwpy4xwma8h" path="res://Tower/Package/AncientReliques-4-Collumn_Ruin.obj" id="13_tq5rk"]
+[ext_resource type="Shader" path="res://Ice.gdshader" id="14_ny7cq"]
 [ext_resource type="ArrayMesh" uid="uid://ccgt3v42xudk6" path="res://Tower/Package/AncientReliques-5-Collumn.obj" id="14_xe81v"]
 [ext_resource type="Shader" uid="uid://bn05tnrsfi082" path="res://Scripts/FireShader.tres" id="15_s02xk"]
+[ext_resource type="Texture2D" uid="uid://kicnpdvbmtl7" path="res://Ice/Ice002_1K-JPG_Color.jpg" id="15_wq0b6"]
 [ext_resource type="Texture2D" uid="uid://bbf70ftnhwa0x" path="res://FireTex/Voronoi01.png" id="16_6fkpu"]
+[ext_resource type="Texture2D" uid="uid://bfteu32fa887f" path="res://Ice/Ice002_1K-JPG_NormalDX.jpg" id="16_gvs1i"]
 [ext_resource type="Texture2D" uid="uid://cyi6bd1hw6qhl" path="res://FireTex/Flame01.png" id="17_7p18j"]
+[ext_resource type="Texture2D" uid="uid://5si5r313kw2d" path="res://Ice/Ice003_1K-JPG_Displacement.jpg" id="17_pq52c"]
 [ext_resource type="Texture2D" uid="uid://cj8rb2lltiui8" path="res://FireTex/Voronoi02.png" id="18_1hbc2"]
 [ext_resource type="Texture2D" uid="uid://danvj0rooq30f" path="res://FireTex/Flame02.png" id="19_fcd1o"]
 [ext_resource type="Shader" uid="uid://beobdum5sy25d" path="res://Scripts/ParticalsFire.tres" id="20_win0e"]
@@ -40,7 +44,6 @@
 [ext_resource type="Shader" path="res://Foam.gdshader" id="37_dolr1"]
 [ext_resource type="Texture2D" uid="uid://c3yx2yjmumy50" path="res://Tower/Package/AncientReliques-3-Head_Totem.png" id="38_ghfw7"]
 [ext_resource type="ArrayMesh" uid="uid://dmgo8ebyfcker" path="res://Blender/ROCK2obj.obj" id="39_xcpmm"]
-[ext_resource type="Shader" path="res://Simulation.gdshader" id="41_2vhe6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_780fx"]
 size = Vector3(1.79306, 0.185764, 1.80279)
@@ -78,13 +81,21 @@ shader_parameter/cutplane = null
 shader_parameter/_ablbedo = ExtResource("7_03wts")
 shader_parameter/_noise = SubResource("NoiseTexture2D_xorhp")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y82nh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lwlua"]
 render_priority = 0
-shader = ExtResource("1_pd63u")
-shader_parameter/ColorParameter = Color(0.0627451, 0.25098, 0.415686, 1)
+shader = ExtResource("14_ny7cq")
+shader_parameter/top_color = Color(0.6764, 0.980092, 1, 1)
+shader_parameter/depth = 2.795
+shader_parameter/normal_depth = 2.07
+shader_parameter/roughness = 1.0
+shader_parameter/metallic = 0.055
+shader_parameter/refractive_index = 0.1
+shader_parameter/over_texture = ExtResource("15_wq0b6")
+shader_parameter/under_texture = ExtResource("17_pq52c")
+shader_parameter/surface_normalmap = ExtResource("16_gvs1i")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_u0bmv"]
-material = SubResource("ShaderMaterial_y82nh")
+material = SubResource("ShaderMaterial_lwlua")
 size = Vector2(10, 10)
 subdivide_width = 30
 subdivide_depth = 30
@@ -390,8 +401,8 @@ noise = SubResource("FastNoiseLite_h3r3p")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lu8lo"]
 render_priority = 0
 shader = ExtResource("28_h2dmd")
-shader_parameter/BaseColor = Color(0.172549, 0.231373, 0.254902, 1)
-shader_parameter/Grass = Color(0.227451, 0.564706, 0.678431, 1)
+shader_parameter/BaseColor = Color(0.27451, 0.356863, 0.388235, 1)
+shader_parameter/Grass = Color(0.364706, 0.733333, 0.862745, 1)
 shader_parameter/WindNoise = SubResource("NoiseTexture2D_qy85b")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2y8nx"]
@@ -767,8 +778,8 @@ noise = SubResource("FastNoiseLite_uit4a")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6d0p0"]
 render_priority = 0
 shader = ExtResource("37_dolr1")
-shader_parameter/front_colour = Color(1, 1, 1, 1)
-shader_parameter/back_colour = Color(0.196078, 1, 1, 1)
+shader_parameter/front_colour = Color(0, 0, 0, 1)
+shader_parameter/back_colour = Color(0.0235294, 0.0196078, 0, 1)
 shader_parameter/dissolve_tex = SubResource("NoiseTexture2D_a77wr")
 
 [sub_resource type="Gradient" id="Gradient_x7g35"]
@@ -1020,14 +1031,6 @@ shader_parameter/LightColor = Color(0.227451, 1, 0.188235, 1)
 shader_parameter/Speed = 1.0
 shader_parameter/Albedo = ExtResource("38_ghfw7")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_23mq5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1mvyo"]
-shader = ExtResource("41_2vhe6")
-shader_parameter/phase = 0.2
-shader_parameter/attenuation = 0.999
-shader_parameter/deltaUV = 3.0
-
 [node name="Node3D" type="Node3D"]
 
 [node name="Cam" type="Node3D" parent="."]
@@ -1124,12 +1127,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.96647, 0, 1.15938)
 
 [node name="Water" type="MeshInstance3D" parent="Water"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.523293, 1.44693)
+visible = false
 mesh = SubResource("PlaneMesh_u0bmv")
 skeleton = NodePath("../..")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="Water/Water"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Water/Water/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0728507, -0.300936, -0.884865)
+shape = SubResource("BoxShape3D_arty1")
+
+[node name="Water2" type="MeshInstance3D" parent="Water"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0135436, 0.676438, 1.47769)
+mesh = SubResource("PlaneMesh_u0bmv")
+skeleton = NodePath("../..")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Water/Water2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water/Water2/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0728507, -0.300936, -0.884865)
 shape = SubResource("BoxShape3D_arty1")
 
@@ -1261,7 +1276,7 @@ mesh = ExtResource("14_xe81v")
 skeleton = NodePath("../..")
 
 [node name="BlueLight2" type="OmniLight3D" parent="Particle Effects/AncientReliques-5-collumn2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34667, 2.85195, 0.164063)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34667, 2.85195, 0.00508833)
 light_color = Color(0, 0.5, 1, 1)
 light_energy = 8.644
 light_indirect_energy = 2.787
@@ -1351,11 +1366,12 @@ target_position = Vector3(0, 2, 0)
 [node name="Lighting" type="Node" parent="."]
 
 [node name="BlueLight" type="OmniLight3D" parent="Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58055, 1.87556, 4.00692)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58055, 2.45245, 3.70074)
 light_color = Color(0, 0.5, 1, 1)
-light_energy = 3.284
-light_indirect_energy = 2.787
-light_volumetric_fog_energy = 6.696
+light_energy = 10.572
+light_indirect_energy = 2.955
+light_volumetric_fog_energy = 6.947
+light_specular = 2.008
 light_bake_mode = 0
 shadow_enabled = true
 omni_range = 3.32996
@@ -1382,9 +1398,9 @@ shape = SubResource("BoxShape3D_s0hhm")
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(-0.310958, 0.950424, -5.79205e-10, 0.0243983, 0.0079826, 0.99967, 0.95011, 0.310856, -0.025671, -0.286883, 7.18488, 1.08995)
 light_energy = 16.0
-light_indirect_energy = 1.243
-light_volumetric_fog_energy = 2.068
-light_specular = 13.319
+light_indirect_energy = 5.06
+light_volumetric_fog_energy = 2.231
+light_specular = 16.0
 shadow_bias = 0.0
 shadow_reverse_cull_face = true
 distance_fade_begin = 1.0
@@ -1456,7 +1472,7 @@ cast_shadow = 0
 multimesh = SubResource("MultiMesh_ndkwf")
 
 [node name="Hologram" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.720014, 0, 0.859079, 0, 1, 0, -0.859079, 0, 0.720014, 2.44756, 2.30749, 1.52413)
+transform = Transform3D(0.494169, 0, 1.01318, 0, 1, 0, -1.01318, 0, 0.494169, 2.44756, 2.30749, 1.52413)
 mesh = SubResource("ArrayMesh_8rfkb")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_yl0m2")
@@ -1514,7 +1530,7 @@ light_energy = 9.284
 omni_range = 3.55121
 
 [node name="Foam" type="GPUParticles3D" parent="Waterfall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90959, -1.75598, -0.263214)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90959, -1.45536, -0.263214)
 material_override = SubResource("ShaderMaterial_6d0p0")
 amount = 30
 lifetime = 0.4
@@ -1569,6 +1585,7 @@ spot_angle = 49.6372
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9, 0)
 layers = 3
+light_color = Color(0.454902, 0.811765, 0.988235, 1)
 light_energy = 0.422
 light_indirect_energy = 0.594
 light_volumetric_fog_energy = 0.0
@@ -1576,11 +1593,6 @@ light_cull_mask = 4293918722
 shadow_enabled = true
 shadow_bias = 2.13
 sky_mode = 1
-
-[node name="WaterTest" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8767, 0, -4.30036)
-mesh = SubResource("PlaneMesh_23mq5")
-surface_material_override/0 = SubResource("ShaderMaterial_1mvyo")
 
 [editable path="Character + Camera/UCharacterBody3D/CollisionShapeNormal/character_duck"]
 [editable path="Grass_Obj/Grass"]
