@@ -43,6 +43,3 @@ void fragment() {
 	ALPHA = texture(water_tex, uv_movement).a;
 }
 
-void light() {
-	// Called for every pixel for every light affecting the material.
-}

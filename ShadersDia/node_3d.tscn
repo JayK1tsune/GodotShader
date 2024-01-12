@@ -1,4 +1,4 @@
-[gd_scene load_steps=158 format=3 uid="uid://li1naa70ewc2"]
+[gd_scene load_steps=164 format=3 uid="uid://li1naa70ewc2"]
 
 [ext_resource type="Shader" uid="uid://dbnuyafe4jyho" path="res://Scripts/water.tres" id="1_pd63u"]
 [ext_resource type="Script" path="res://Cam.gd" id="1_q56j1"]
@@ -14,7 +14,6 @@
 [ext_resource type="ArrayMesh" uid="uid://di4mm86a0ct6j" path="res://Tower/Package/AncientReliques-1-GiantStatue_Hand.obj" id="11_30tab"]
 [ext_resource type="ArrayMesh" uid="uid://du8o1gqdej6mt" path="res://Tower/Package/AncientReliques-3-Head_Totem.obj" id="12_uq5s2"]
 [ext_resource type="ArrayMesh" uid="uid://crlwpy4xwma8h" path="res://Tower/Package/AncientReliques-4-Collumn_Ruin.obj" id="13_tq5rk"]
-[ext_resource type="Shader" path="res://Ice.gdshader" id="14_ny7cq"]
 [ext_resource type="ArrayMesh" uid="uid://ccgt3v42xudk6" path="res://Tower/Package/AncientReliques-5-Collumn.obj" id="14_xe81v"]
 [ext_resource type="Shader" uid="uid://bn05tnrsfi082" path="res://Scripts/FireShader.tres" id="15_s02xk"]
 [ext_resource type="Texture2D" uid="uid://kicnpdvbmtl7" path="res://Ice/Ice002_1K-JPG_Color.jpg" id="15_wq0b6"]
@@ -44,6 +43,8 @@
 [ext_resource type="Shader" path="res://Foam.gdshader" id="37_dolr1"]
 [ext_resource type="Texture2D" uid="uid://c3yx2yjmumy50" path="res://Tower/Package/AncientReliques-3-Head_Totem.png" id="38_ghfw7"]
 [ext_resource type="ArrayMesh" uid="uid://dmgo8ebyfcker" path="res://Blender/ROCK2obj.obj" id="39_xcpmm"]
+[ext_resource type="PackedScene" uid="uid://mu21ddliwrm2" path="res://KayKit/Models/Characters/Dog/dae/character_dog.dae" id="44_p6cjh"]
+[ext_resource type="Script" path="res://character_dog.gd" id="45_v4u7y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_780fx"]
 size = Vector3(1.79306, 0.185764, 1.80279)
@@ -81,12 +82,66 @@ shader_parameter/cutplane = null
 shader_parameter/_ablbedo = ExtResource("7_03wts")
 shader_parameter/_noise = SubResource("NoiseTexture2D_xorhp")
 
+[sub_resource type="Shader" id="Shader_or87a"]
+code = "shader_type spatial;
+
+uniform sampler2D over_texture : source_color;
+uniform sampler2D under_texture : source_color;
+uniform sampler2D surface_normalmap : hint_normal;
+
+uniform vec4 top_color : source_color = vec4(0.6764, 0.980092, 1.0, 1.0); //Base color for my ice, can be changed in inspector.
+uniform float depth = 0.1;
+uniform float normal_depth = 1.0;
+uniform float roughness : hint_range(0.0, 1.0) = 0.0;
+uniform float metallic : hint_range(0.0, 1.0) = 0.7;
+uniform float refractive_index = 0.1;
+
+float blendOverlay_f(float base, float blend) {
+	float branchless = step (base,0.5);
+	return (2.0*base*blend)*branchless + (1.0-2.0*(1.0-base)*(1.0-blend))*(1.0-branchless); //This is branchless version
+}
+
+vec3 blendOverlay(vec3 base, vec3 blend) {
+	return vec3(blendOverlay_f(base.r,blend.r),blendOverlay_f(base.g,blend.g),blendOverlay_f(base.b,blend.b));
+}
+
+varying vec3 ro;
+varying vec3 p;
+varying vec3 vertex_normal_ws;
+
+void vertex()
+{
+	ro = (INV_VIEW_MATRIX * vec4(0.0, 0.0, 0.0, 1.0)).xyz;// Get camera position in World space coordinates
+	p = ((MODEL_MATRIX)*vec4(VERTEX,1.0)).xyz;// Get fragment position in world space coordinates
+	vertex_normal_ws = ((MODEL_MATRIX)*vec4(NORMAL,1.0)).xyz;
+}
+
+void fragment(){
+	vec3 normal = texture(surface_normalmap, UV).xyz * 2.0 - 1.0;
+	NORMAL_MAP = texture(surface_normalmap, UV).xyz;
+	NORMAL_MAP_DEPTH = normal_depth;
+	
+	vec3 refraction;
+	vec3 rd = normalize(p - ro - normal * refractive_index) * depth;
+	
+	vec3 over_color = texture(over_texture, UV).rgb;
+	vec3 color = blendOverlay(over_color, top_color.rgb);
+	vec2 offset = rd.xz;
+	vec3 under_color = texture(under_texture, UV + offset + (normal.xy)).rgb;
+	ALBEDO = blendOverlay(color, under_color);
+	ROUGHNESS = roughness;
+	METALLIC = metallic;
+}
+
+
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lwlua"]
 render_priority = 0
-shader = ExtResource("14_ny7cq")
+shader = SubResource("Shader_or87a")
 shader_parameter/top_color = Color(0.6764, 0.980092, 1, 1)
-shader_parameter/depth = 2.795
-shader_parameter/normal_depth = 2.07
+shader_parameter/depth = 3.395
+shader_parameter/normal_depth = 2.17
 shader_parameter/roughness = 1.0
 shader_parameter/metallic = 0.055
 shader_parameter/refractive_index = 0.1
@@ -217,6 +272,7 @@ shader_parameter/Texture2DParameter = ExtResource("19_fcd1o")
 shader_parameter/DissovleTexture = ExtResource("18_1hbc2")
 
 [sub_resource type="QuadMesh" id="QuadMesh_h5x4x"]
+lightmap_size_hint = Vector2i(7, 7)
 material = SubResource("ShaderMaterial_7iu1r")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_83alo"]
@@ -365,11 +421,11 @@ fog_light_color = Color(0.313726, 0.25098, 0.639216, 1)
 fog_light_energy = 0.43
 fog_sun_scatter = 0.14
 fog_density = 0.0
-fog_sky_affect = 0.0
+fog_sky_affect = 0.278
 fog_height = 0.8
-fog_height_density = 5.4759
+fog_height_density = 13.0053
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.0856
+volumetric_fog_density = 0.1819
 volumetric_fog_albedo = Color(0.733333, 0.45098, 0.635294, 1)
 volumetric_fog_emission = Color(0.14902, 0.12549, 0.639216, 1)
 volumetric_fog_emission_energy = 0.2
@@ -1031,10 +1087,46 @@ shader_parameter/LightColor = Color(0.227451, 1, 0.188235, 1)
 shader_parameter/Speed = 1.0
 shader_parameter/Albedo = ExtResource("38_ghfw7")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjnwl"]
+render_priority = 0
+shader = ExtResource("29_wti8t")
+shader_parameter/lines1 = 160.0
+shader_parameter/lines2 = 20.0
+shader_parameter/color = Color(4, 0, 0, 1)
+shader_parameter/_emission = 1.595
+shader_parameter/_fresnel = 2.412
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ltj4s"]
+render_priority = 0
+shader = ExtResource("29_wti8t")
+shader_parameter/lines1 = 160.0
+shader_parameter/lines2 = 20.0
+shader_parameter/color = Color(4, 1, 0, 1)
+shader_parameter/_emission = 4.291
+shader_parameter/_fresnel = 2.679
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3pbfk"]
+render_priority = 0
+shader = ExtResource("29_wti8t")
+shader_parameter/lines1 = 160.0
+shader_parameter/lines2 = 20.0
+shader_parameter/color = Color(4, 1, 0, 1)
+shader_parameter/_emission = 4.291
+shader_parameter/_fresnel = 2.679
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tu5kj"]
+render_priority = 0
+shader = ExtResource("29_wti8t")
+shader_parameter/lines1 = 160.0
+shader_parameter/lines2 = 20.0
+shader_parameter/color = Color(4, 1, 0, 1)
+shader_parameter/_emission = 4.291
+shader_parameter/_fresnel = 2.679
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Cam" type="Node3D" parent="."]
-transform = Transform3D(-0.305694, 0, -0.95213, 0, 1, 0, 0.95213, 0, -0.305694, -0.739654, 1.56079, 1.71139)
+transform = Transform3D(0.289032, 0, 0.95732, 0, 1, 0, -0.95732, 0, 0.289032, -0.739654, 1.56079, 1.71139)
 script = ExtResource("1_q56j1")
 spin_speed = 0.001
 
@@ -1123,28 +1215,16 @@ script = ExtResource("9_uyt6s")
 [node name="Grass" type="MultiMeshInstance3D" parent="Landscape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.96647, 0, 1.15938)
 
-[node name="Water" type="Node" parent="."]
+[node name="Water & Ice" type="Node" parent="."]
 
-[node name="Water" type="MeshInstance3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.523293, 1.44693)
-visible = false
+[node name="Ice" type="MeshInstance3D" parent="Water & Ice"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0135436, 0.676438, 1.38718)
 mesh = SubResource("PlaneMesh_u0bmv")
 skeleton = NodePath("../..")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="Water/Water"]
+[node name="RigidBody3D" type="RigidBody3D" parent="Water & Ice/Ice"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Water/Water/RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0728507, -0.300936, -0.884865)
-shape = SubResource("BoxShape3D_arty1")
-
-[node name="Water2" type="MeshInstance3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0135436, 0.676438, 1.47769)
-mesh = SubResource("PlaneMesh_u0bmv")
-skeleton = NodePath("../..")
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Water/Water2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Water/Water2/RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water & Ice/Ice/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0728507, -0.300936, -0.884865)
 shape = SubResource("BoxShape3D_arty1")
 
@@ -1235,7 +1315,7 @@ shadow_blur = 2.523
 omni_range = 3.26356
 
 [node name="Blue Flame" type="GPUParticles3D" parent="Particle Effects"]
-transform = Transform3D(1, 0, 0, 0, 0.968951, 0.247253, 0, -0.247253, 0.968951, -2.60463, 2.11215, 3.77607)
+transform = Transform3D(1, 0, 0, 0, -0.998217, -0.05969, 0, 0.05969, -0.998217, -2.63661, 1.76625, 3.67763)
 material_override = SubResource("ShaderMaterial_psjtv")
 amount = 1
 lifetime = 5.0
@@ -1251,7 +1331,7 @@ process_material = SubResource("ParticleProcessMaterial_fcw4c")
 draw_pass_1 = SubResource("QuadMesh_h5x4x")
 
 [node name="Smoke" type="GPUParticles3D" parent="Particle Effects/Blue Flame"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.142785, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0864657, 0.0453835)
 sorting_offset = -1.0
 amount = 20
 lifetime = 1.6
@@ -1259,6 +1339,7 @@ process_material = SubResource("ParticleProcessMaterial_83alo")
 draw_pass_1 = SubResource("QuadMesh_nlhlm")
 
 [node name="ParticalFloating" type="GPUParticles3D" parent="Particle Effects/Blue Flame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138795, 0.0430906)
 sorting_offset = 1.0
 material_override = SubResource("ShaderMaterial_aicm1")
 amount = 50
@@ -1268,6 +1349,7 @@ draw_pass_1 = SubResource("QuadMesh_sabws")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Particle Effects/Blue Flame"]
 stream = ExtResource("22_lm7qv")
+autoplay = true
 max_distance = 141.24
 
 [node name="AncientReliques-5-collumn2" type="MeshInstance3D" parent="Particle Effects"]
@@ -1287,7 +1369,7 @@ shadow_enabled = true
 omni_range = 3.29868
 
 [node name="Blue Flame2" type="GPUParticles3D" parent="Particle Effects/AncientReliques-5-collumn2"]
-transform = Transform3D(1, 0, 0, 0, 0.968951, 0.247253, 0, -0.247253, 0.968951, -2.35154, 2.90585, 0.0452609)
+transform = Transform3D(0.294311, -0.445962, -0.84528, 0.401664, 0.860267, -0.314017, 0.867206, -0.2471, 0.432313, -2.39454, 2.90585, 0.0452609)
 material_override = SubResource("ShaderMaterial_psjtv")
 amount = 1
 lifetime = 5.0
@@ -1303,7 +1385,7 @@ process_material = SubResource("ParticleProcessMaterial_fcw4c")
 draw_pass_1 = SubResource("QuadMesh_h5x4x")
 
 [node name="Smoke" type="GPUParticles3D" parent="Particle Effects/AncientReliques-5-collumn2/Blue Flame2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.142785, 0)
+transform = Transform3D(1, 0, 0, 0, -0.982294, 0.187347, 0, -0.187347, -0.982294, 0, -0.142785, 4.76837e-07)
 sorting_offset = -1.0
 amount = 20
 lifetime = 1.6
@@ -1472,7 +1554,7 @@ cast_shadow = 0
 multimesh = SubResource("MultiMesh_ndkwf")
 
 [node name="Hologram" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.494169, 0, 1.01318, 0, 1, 0, -1.01318, 0, 0.494169, 2.44756, 2.30749, 1.52413)
+transform = Transform3D(-0.707165, 0, 0.903489, 0, 1, 0, -0.903489, 0, -0.707165, 2.44756, 2.30749, 1.52413)
 mesh = SubResource("ArrayMesh_8rfkb")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_yl0m2")
@@ -1594,5 +1676,30 @@ shadow_enabled = true
 shadow_bias = 2.13
 sky_mode = 1
 
+[node name="AncientReliques-5-collumn" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.539309, 0.515588, 1.74102)
+mesh = ExtResource("14_xe81v")
+
+[node name="character_dog" parent="." instance=ExtResource("44_p6cjh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4857, 0.54513, 0.367789)
+
+[node name="character_dog" parent="character_dog" index="0"]
+transform = Transform3D(0.0643481, 0, 1.00377, 0, 1, 0, -1.00377, 0, 0.0643481, -0.350029, 2.53892, 1.35664)
+surface_material_override/0 = SubResource("ShaderMaterial_xjnwl")
+script = ExtResource("45_v4u7y")
+spin_speed = 0.003
+
+[node name="character_dogHead" parent="character_dog/character_dog" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_ltj4s")
+surface_material_override/1 = SubResource("ShaderMaterial_3pbfk")
+surface_material_override/2 = SubResource("ShaderMaterial_tu5kj")
+
+[node name="character_dogArmLeft" parent="character_dog/character_dog" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_ltj4s")
+
+[node name="character_dogArmRight" parent="character_dog/character_dog" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_ltj4s")
+
 [editable path="Character + Camera/UCharacterBody3D/CollisionShapeNormal/character_duck"]
 [editable path="Grass_Obj/Grass"]
+[editable path="character_dog"]

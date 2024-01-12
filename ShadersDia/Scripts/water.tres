@@ -126,7 +126,7 @@ operator = 2
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform sampler2D tex_vtx_4;
 uniform sampler2D depth_tex_frg_14 : hint_depth_texture;
@@ -289,6 +289,7 @@ void fragment() {
 
 }
 "
+modes/depth_draw = 1
 nodes/vertex/0/position = Vector2(1060, 20)
 nodes/vertex/2/node = SubResource("VisualShaderNodeUVFunc_ppspb")
 nodes/vertex/2/position = Vector2(0, 0)

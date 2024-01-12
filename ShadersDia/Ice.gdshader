@@ -4,7 +4,7 @@ uniform sampler2D over_texture : source_color;
 uniform sampler2D under_texture : source_color;
 uniform sampler2D surface_normalmap : hint_normal;
 
-uniform vec4 top_color : source_color = vec4(0.6764, 0.980092, 1.0, 1.0);
+uniform vec4 top_color : source_color = vec4(0.6764, 0.980092, 1.0, 1.0); //Base color for my ice, can be changed in inspector.
 uniform float depth = 0.1;
 uniform float normal_depth = 1.0;
 uniform float roughness : hint_range(0.0, 1.0) = 0.0;
